@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis 15 - Naki</title>
+    <!-- Fuentes de Google: Se usan una tipografía mágica/antigua para títulos y una legible para texto -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Montserrat:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <!-- Iconos FontAwesome para los botones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Estilos Generales y Paleta de Colores de Hogwarts (Misterioso, Borgoña y Dorado) */
+        :root {
+            --bg-principal: #0d0d0d;
+            --bg-tarjeta: #1a1510;
+            --dorado: #dfb15b;
+            --dorado-brillo: #ffd700;
+            --texto-claro: #f5f5f5;
+            --texto-oscuro: #a5a5a5;
+            --borde-magico: 2px solid #dfb15b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-principal);
+            color: var(--texto-claro);
+            text-align: center;
+            background-image: radial-gradient(circle, rgba(26, 21, 16, 1) 0%, rgba(13, 13, 13, 1) 100%);
+            overflow-x: hidden;
+        }
+
+        /* Contenedor Principal (Formato Mobile First, ideal para ver en celular) */
+        .invitacion-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* Secciones de la Tarjeta */
+        section {
+            background-color: var(--bg-tarjeta);
+            border: var(--borde-magico);
+            border-radius: 12px;
+            padding: 30px 20px;
+            box-shadow: 0 0 15px rgba(223, 177, 91, 0.2);
+            position: relative;
+        }
+
+        /* Detalles Estéticos Mágicos */
+        section::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            border: 1px solid rgba(223, 177, 91, 0.3);
+            border-radius: 8px;
+            pointer-events: none;
+        }
+
+        /* Tipografías */
+        h1,
+        h2,
+        h3 {
+            font-family: 'Cinzel Decorative', serif;
+            color: var(--dorado);
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(223, 177, 91, 0.5);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--texto-claro);
+        }
+
+        .subtitulo {
+            color: var(--texto-oscuro);
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        /* Botones Estilo Hogwarts */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: transparent;
+            color: var(--dorado);
+            border: var(--borde-magico);
+            padding: 12px 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: var(--dorado);
+            color: var(--bg-principal);
+            box-shadow: 0 0 15px var(--dorado-brillo);
+            transform: translateY(-2px);
+        }
+
+        /* Contador de Tiempo */
+        .cuenta-regresiva {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .tiempo-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tiempo-box span:first-child {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--dorado);
+        }
+
+        .tiempo-box span:last-child {
+            font-size: 0.75rem;
+            color: var(--texto-oscuro);
+            text-transform: uppercase;
+        }
+
+        /* Estilos específicos para datos copiables */
+        .alias-box {
+            background-color: rgba(223, 177, 91, 0.1);
+            border: 1px dashed var(--dorado);
+            padding: 10px;
+            margin: 15px 0;
+            font-size: 1.1rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border-radius: 6px;
+            color: var(--dorado-brillo);
+        }
+
+
+        /* ===========================
+   PARTICLES
+=========================== */
+
+        #particles {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            pointer-events: none;
+
+            z-index: 9999;
+        }
+
+        .magic-particle {
+            position: absolute;
+
+            width: 4px;
+            height: 4px;
+
+            background: var(--dorado);
+
+            border-radius: 50%;
+
+            animation: floatUp linear forwards;
+        }
+
+        @keyframes floatUp {
+
+            from {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    
+<div id="particles"></div>
+    <div class="invitacion-container">
+        
+
+        <!-- Portada de la Invitación -->
+        <header>
+            <p class="subtitulo">Solemnemente juro que mis quince van a ser una fiesta...</p>
+            <h1>Naki</h1>
+            <p style="font-size: 1.2rem; letter-spacing: 3px; color: var(--dorado);">MIS 15 AÑOS</p>
+        </header>
+
+        <!-- Cuenta Regresiva -->
+        <section id="contador">
+            <h2>Faltan sólo...</h2>
+            <div class="cuenta-regresiva">
+                <div class="tiempo-box"><span id="dias">00</span><span>Días</span></div>
+                <div class="tiempo-box"><span id="horas">00</span><span>Hs</span></div>
+                <div class="tiempo-box"><span id="minutos">00</span><span>Min</span></div>
+                <div class="tiempo-box"><span id="segundos">00</span><span>Seg</span></div>
+            </div>
+        </section>
+
+        <!-- Cuándo y Dónde -->
+        <section id="detalles">
+            <i class="fa-solid fa-wand-magic-sparkles"
+                style="color: var(--dorado); font-size: 2rem; margin-bottom: 10px;"></i>
+            <h2>La Celebración</h2>
+            <p><strong>DÍA:</strong> Sábado 05 de Septiembre de 2026</p>
+            <p><strong>HORA:</strong> 21:00 hs</p>
+            <hr style="border: 0; border-top: 1px solid rgba(223, 177, 91, 0.3); margin: 15px 0;">
+            <p><strong>LUGAR:</strong> Guinez Eventos</p>
+            <p class="subtitulo">Te esperamos para compartir una noche mágica</p>
+
+            <a href="https://maps.app.goo.gl/25PhPpqrFunmXeN98" target="_blank" class="btn">
+                <i class="fa-solid fa-map-location-dot"></i> Cómo llegar
+            </a>
+        </section>
+
+        <!-- Confirmación de Asistencia -->
+        <section id="rsv p">
+            <h2>Confirmar Asistencia</h2>
+            <p>Por favor, avisanos si vas a poder asistir antes del 20 de Agosto para preparar tu lugar en el Gran
+                Comedor.</p>
+
+            <!-- Link directo a WhatsApp con mensaje personalizado pre-armado -->
+            <a href="https://wa.me/5492664349020?text=Hola!%20Quiero%20confirmar%20mi%20asistencia%20al%20cumple%20de%20Naki%F0%9F%A7%AA%E2%9C%A8"
+                target="_blank" class="btn" style="border-color: #25D366; color: #25D366;">
+                <i class="fa-brands fa-whatsapp"></i> Confirmar por WhatsApp
+            </a>
+        </section>
+
+        <!-- Regalos / Regalo Mágico -->
+        <section id="regalos">
+            <i class="fa-solid fa-gift" style="color: var(--dorado); font-size: 2rem; margin-bottom: 10px;"></i>
+            <h2>Regalos</h2>
+            <p>El mejor regalo es que vengas a compartir conmigo, pero si querés hacerme un presente, podés realizar una
+                transferencia al siguiente alias:</p>
+
+            <div class="alias-box" id="aliasTexto">NakiMP</div>
+
+            <button onclick="copiarAlias()" class="btn">
+                <i class="fa-solid fa-copy"></i> Copiar Alias
+            </button>
+        </section>
+
+        <!-- Playlist de Spotify (A la espera del link) -->
+        <section id="musica">
+            <h2>Música</h2>
+            <p>¡Ayudame a armar la playlist de la fiesta agregando tus canciones favoritas!</p>
+
+            <!-- Reemplazar el '#' dentro de href cuando tengas la URL definitiva de la playlist -->
+            <a href="#" target="_blank" class="btn" style="border-color: #1DB954; color: #1DB954;">
+                <i class="fa-brands fa-spotify"></i> Sugerir Canción
+            </a>
+        </section>
+
+    </div>
+
+    <!-- Lógica en JavaScript para el Contador y el Botón de Copiar -->
+    <script>
+        // Configuración de la fecha del evento: 5 de Septiembre de 2026 a las 21:00
+        const fechaEvento = new Date('September 5, 2026 21:00:00').getTime();
+
+        const contadorIntervalo = setInterval(function () {
+            const ahora = new Date().getTime();
+            const distancia = fechaEvento - ahora;
+
+            // Cálculos de tiempo para días, horas, minutos y segundos
+            const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+            // Muestra los resultados en los elementos correspondientes
+            document.getElementById("dias").innerHTML = dias < 10 ? "0" + dias : dias;
+            document.getElementById("horas").innerHTML = horas < 10 ? "0" + horas : horas;
+            document.getElementById("minutos").innerHTML = minutos < 10 ? "0" + minutos : minutos;
+            document.getElementById("segundos").innerHTML = segundos < 10 ? "0" + segundos : segundos;
+
+            // Si la cuenta regresiva termina
+            if (distancia < 0) {
+                clearInterval(contadorIntervalo);
+                document.getElementById("contador").innerHTML = "<h2>¡Hoy es el gran día!</h2>";
+            }
+        }, 1000);
+
+        // Función interactiva para copiar el alias automáticamente
+        function copiarAlias() {
+            const aliasTxt = document.getElementById("aliasTexto").innerText;
+            navigator.clipboard.writeText(aliasTxt).then(() => {
+                alert("¡Alias copiado al portapapeles exitosamente!");
+            }).catch(err => {
+                console.error('Error al copiar el alias: ', err);
+            });
+        }
+
+
+        // =========================
+        // PARTICULAS MAGICAS
+        // =========================
+
+        const particles =
+            document.getElementById("particles");
+
+        function createParticle() {
+
+            const particle =
+                document.createElement("div");
+
+            particle.classList.add(
+                "magic-particle"
+            );
+
+            particle.style.left =
+                Math.random() * 100 + "%";
+
+            particle.style.bottom =
+                "-10px";
+
+            particle.style.animationDuration =
+                (Math.random() * 4 + 4) + "s";
+
+            particle.style.opacity =
+                Math.random();
+
+            particles.appendChild(
+                particle
+            );
+
+            setTimeout(() => {
+                particle.remove();
+            }, 8000);
+
+        }
+
+        setInterval(
+            createParticle,
+            200
+        );
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis 15 - Naki</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Paleta de colores Slytherin & Hogwarts de la imagen */
+        :root {
+            --verde-oscuro: #061e12;
+            --verde-slytherin: #0d2e1d;
+            --dorado: #c5a059;
+            --dorado-brillo: #e5c17d;
+            --texto-claro: #f0e6d2;
+            --pergamino: #f4ebd0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--verde-oscuro);
+            color: var(--texto-claro);
+            text-align: center;
+            /* Fondo con degradado simulando el cielo oscuro de Hogwarts */
+            background-image: radial-gradient(circle at center, #113f28 0%, #05170e 80%);
+            background-attachment: fixed;
+            padding: 10px;
+        }
+
+        /* Contenedor principal estilo celular */
+        .invitacion-container {
+            max-width: 480px;
+            margin: 20px auto;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        /* Marcos Dorados estilo la imagen */
+        .marco-magico {
+            border: 2px solid var(--dorado);
+            border-image: linear-gradient(to bottom right, var(--dorado), #8a6f3e, var(--dorado-brillo)) 1;
+            padding: 25px 15px;
+            background: rgba(13, 46, 29, 0.6);
+            backdrop-filter: blur(5px);
+            position: relative;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Esquinas decorativas finas */
+        .marco-magico::before {
+            content: '';
+            position: absolute;
+            top: 4px; left: 4px; right: 4px; bottom: 4px;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            pointer-events: none;
+        }
+
+        /* Secciones tipo Pergamino Antiguo (Mapa y Cajas de abajo) */
+        .pergamino-box {
+            background-color: var(--pergamino);
+            color: #2b2013;
+            border-radius: 4px;
+            padding: 25px 15px;
+            border: 1px solid #d3c29d;
+            box-shadow: inset 0 0 20px rgba(138, 111, 62, 0.4), 0 5px 15px rgba(0,0,0,0.5);
+            background-image: url('https://www.transparenttextures.com/patterns/parchment.png'); /* Textura sutil */
+        }
+
+        /* Títulos */
+        h1.nombre {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            color: var(--texto-claro);
+            text-shadow: 0 0 8px rgba(13, 230, 120, 0.4), 2px 2px 4px rgba(0,0,0,0.8);
+            margin: -10px 0 10px 0;
+        }
+
+        h2 {
+            font-family: 'Cinzel Decorative', serif;
+            color: var(--dorado);
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+        }
+
+        .pergamino-box h2 {
+            color: #4a3621;
+            text-shadow: none;
+        }
+
+        .sub-titulo {
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--dorado-brillo);
+            margin-bottom: 5px;
+        }
+
+        .fecha-grande {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            color: var(--texto-claro);
+            margin: 10px 0;
+        }
+
+        /* Estilo de los Botones de la Imagen (Fondo verde oscuro texturizado, relieve y borde dorado) */
+        .btn-magico {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #0b2b1a 0%, #05170d 100%);
+            color: var(--dorado-brillo);
+            border: 2px solid var(--dorado);
+            padding: 14px 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            text-decoration: none;
+            width: 100%;
+            margin-top: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.4), inset 0 1px 2px rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .btn-magico:hover {
+            filter: brightness(1.2);
+            box-shadow: 0 0 10px rgba(197, 160, 89, 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* Botones específicos cuando van dentro de pergaminos */
+        .pergamino-box .btn-magico {
+            background: linear-gradient(135deg, #123824 0%, #092114 100%);
+            border-color: #5c4724;
+            color: var(--pergamino);
+        }
+
+        /* Iconografía Temática (Lechuza, Pluma) usando FontAwesome estilizado */
+        .icono-tematico {
+            font-size: 2.2rem;
+            color: var(--dorado);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .pergamino-box .icono-tematico {
+            color: #61462a;
+        }
+
+        /* Contador */
+        .cuenta-regresiva {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 15px;
+        }
+
+        .tiempo-box {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tiempo-box span:first-child {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--dorado-brillo);
+        }
+
+        .tiempo-box span:last-child {
+            font-size: 0.7rem;
+            color: #a3b899;
+            text-transform: uppercase;
+        }
+
+        /* Alias Box */
+        .alias-tag {
+            background-color: rgba(13, 46, 29, 0.2);
+            border: 1px dashed #61462a;
+            padding: 8px;
+            margin: 10px 0;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #123824;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="invitacion-container">
+
+        <header class="marco-magico">
+            <p class="sub-titulo" style="font-size: 0.7rem; opacity: 0.8;">Te invito a celebrar</p>
+            <p class="sub-titulo" style="font-size: 1.6rem; margin-top: 5px;">Mis 15 Años</p>
+            <h1 class="nombre">Naki</h1>
+            <p style="font-size: 0.9rem; font-style: italic; color: #a3b899; padding: 0 10px;">
+                Quiero compartir una noche mágica, llena de hechizos, risas y momentos inolvidables junto a las personas que más quiero.
+            </p>
+        </header>
+
+        <section class="marco-magico">
+            <h2>El Reloj de Arena Corre</h2>
+            <div class="cuenta-regresiva">
+                <div class="tiempo-box"><span id="dias">00</span><span>Días</span></div>
+                <div class="tiempo-box"><span id="horas">00</span><span>Horas</span></div>
+                <div class="tiempo-box"><span id="minutos">00</span><span>Min</span></div>
+                <div class="tiempo-box"><span id="segundos">00</span><span>Seg</span></div>
+            </div>
+        </section>
+
+        <section class="marco-magico">
+            <i class="fa-solid fa-owl icono-tematico"></i>
+            <h2>La Celebración</h2>
+            <p class="sub-titulo">Sábado</p>
+            <p class="fecha-grande">05 DE SEPTIEMBRE</p>
+            <p class="sub-titulo">Del 2026 — 21:00 Hrs</p>
+            
+            <hr style="border: 0; border-top: 1px solid rgba(197, 160, 89, 0.3); margin: 20px 0;">
+            
+            <p class="sub-titulo">Lugar</p>
+            <p style="font-size: 1.2rem; font-weight: 600; color: var(--dorado-brillo);">Guinez Eventos</p>
+            
+            <a href="https://maps.app.goo.gl/25PhPpqrFunmXeN98" target="_blank" class="btn-magico">
+                <i class="fa-solid fa-location-dot"></i> ¿Cómo llegar?
+            </a>
+        </section>
+
+        <section class="pergamino-box">
+            <i class="fa-solid fa-feather-pointed icono-tematico"></i>
+            <h2>Confirmar Asistencia</h2>
+            <p style="font-size: 0.95rem;">Por favor, confirma tu presencia haciendo clic en el botón inferior para reservar tu lugar en el Gran Comedor.</p>
+            
+            <a href="https://wa.me/5492664349020?text=Hola!%20Quiero%20confirmar%20mi%20asistencia%20al%20cumple%20de%20Naki%20%F0%9F%A7%AA%E2%9C%A8" target="_blank" class="btn-magico">
+                <i class="fa-solid fa-bolt"></i> Confirmar Asistencia
+            </a>
+        </section>
+
+        <section class="pergamino-box">
+            <i class="fa-solid fa-vault icono-tematico"></i>
+            <h2>Regalos</h2>
+            <p style="font-size: 0.9rem; margin-bottom: 5px;">Tu presencia es el regalo más importante para mí.</p>
+            <p style="font-size: 0.85rem; font-style: italic;">Si además querés colaborar con mis próximas aventuras, podés hacerlo por transferencia:</p>
+            
+            <div class="alias-tag" id="aliasTexto">NakiMP</div>
+            
+            <button onclick="copiarAlias()" class="btn-magico">
+                <i class="fa-solid fa-copy"></i> Copiar Alias
+            </button>
+        </section>
+
+        <section class="pergamino-box">
+            <i class="fa-solid fa-music icono-tematico"></i>
+            <h2>Sugerí qué Canción no puede faltar</h2>
+            <p style="font-size: 0.9rem;">¡Tu tema puede hacer la noche aún más mágica!</p>
+            
+            <a href="#" target="_blank" class="btn-magico">
+                <i class="fa-brands fa-spotify"></i> Sugerir Canción
+            </a>
+        </section>
+
+    </div>
+
+    <script>
+        // Cuenta regresiva: 5 sep 2026 21hs
+        const fechaEvento = new Date('September 5, 2026 21:00:00').getTime();
+
+        const contadorIntervalo = setInterval(function() {
+            const ahora = new Date().getTime();
+            const distancia = fechaEvento - ahora;
+
+            const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+            document.getElementById("dias").innerHTML = dias < 10 ? "0" + dias : dias;
+            document.getElementById("horas").innerHTML = horas < 10 ? "0" + horas : horas;
+            document.getElementById("minutos").innerHTML = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("segundos").innerHTML = segundos < 10 ? "0" + segundos : segundos;
+
+            if (distancia < 0) {
+                clearInterval(contadorIntervalo);
+                document.getElementById("dias").parentNode.parentNode.innerHTML = "<h3>¡Bienvenidos a Hogwarts!</h3>";
+            }
+        }, 1000);
+
+        // Copiar alias al portapapeles
+        function copiarAlias() {
+            const aliasTxt = document.getElementById("aliasTexto").innerText;
+            navigator.clipboard.writeText(aliasTxt).then(() => {
+                alert("¡Alias copiado con éxito!");
+            }).catch(err => {
+                console.error('Error al copiar: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
