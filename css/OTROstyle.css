@@ -1,0 +1,372 @@
+:root{
+    --gold:#d4af37;
+    --gold-dark:#b8860b;
+    --parchment:#f5e7c1;
+    --brown:#24150d;
+    --black:#0b0b0b;
+    --wine:#4b1e1e;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Cormorant Garamond', serif;
+    background:#000;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* ===========================
+   HERO
+=========================== */
+
+.hero{
+    min-height:100vh;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,.65),
+        rgba(0,0,0,.85)
+    ),
+    url("../assets/hogwarts-bg.jpg");
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+    position:relative;
+}
+
+.hero-content{
+    max-width:900px;
+    padding:20px;
+    z-index:10;
+}
+
+.hero h1{
+    font-family:'Cinzel', serif;
+    font-size:7rem;
+    color:var(--gold);
+
+    text-shadow:
+    0 0 10px rgba(212,175,55,.8),
+    0 0 30px rgba(212,175,55,.5);
+}
+
+.hero h2{
+    font-size:2rem;
+    margin-top:10px;
+}
+
+.hogwarts-letter{
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:20px;
+    opacity:.9;
+}
+
+.quote{
+    margin-top:30px;
+    font-size:1.8rem;
+    color:var(--parchment);
+    font-style:italic;
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+
+.gold-btn{
+    display:inline-block;
+
+    margin-top:25px;
+    padding:15px 35px;
+
+    border:none;
+    border-radius:40px;
+
+    background:linear-gradient(
+    45deg,
+    var(--gold),
+    #ffd76a
+    );
+
+    color:#111;
+    text-decoration:none;
+
+    font-weight:bold;
+    font-size:1rem;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.gold-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:
+    0 0 20px rgba(212,175,55,.8);
+}
+
+/* ===========================
+   SECTIONS
+=========================== */
+
+.section{
+    padding:90px 20px;
+    text-align:center;
+
+    background:
+    linear-gradient(
+    rgba(20,20,20,.92),
+    rgba(5,5,5,.92)
+    );
+}
+
+.section:nth-child(even){
+    background:
+    linear-gradient(
+    rgba(40,25,15,.95),
+    rgba(15,10,5,.95)
+    );
+}
+
+.section h2{
+    font-family:'Cinzel', serif;
+
+    color:var(--gold);
+
+    margin-bottom:25px;
+
+    font-size:2.3rem;
+}
+
+.section p{
+    max-width:900px;
+    margin:auto;
+    line-height:1.8;
+    font-size:1.5rem;
+}
+
+.big{
+    font-size:2.4rem !important;
+    color:var(--parchment);
+}
+
+/* ===========================
+   PARCHMENT
+=========================== */
+
+.parchment{
+    background:
+    linear-gradient(
+    rgba(245,231,193,.95),
+    rgba(230,215,180,.95)
+    );
+
+    color:#1a1a1a;
+}
+
+.parchment h2,
+.parchment h3{
+    color:var(--wine);
+}
+
+.parchment h3{
+    margin-top:30px;
+    font-size:3rem;
+}
+
+/* ===========================
+   COUNTDOWN
+=========================== */
+
+.countdown{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:25px;
+    margin-top:40px;
+}
+
+.box{
+    width:150px;
+    height:150px;
+
+    border:2px solid var(--gold);
+
+    border-radius:20px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    background:
+    rgba(255,255,255,.03);
+
+    backdrop-filter:blur(5px);
+}
+
+.box span{
+    font-size:3rem;
+    color:var(--gold);
+    font-family:'Cinzel', serif;
+}
+
+.box small{
+    font-size:1rem;
+    margin-top:10px;
+}
+
+/* ===========================
+   ALIAS
+=========================== */
+
+.alias-box{
+    margin-top:30px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:15px;
+}
+
+#alias{
+    background:#fff;
+    color:#111;
+
+    padding:15px 30px;
+
+    border-radius:10px;
+
+    font-size:1.3rem;
+    font-weight:bold;
+}
+
+#copyAlias{
+    padding:12px 25px;
+    cursor:pointer;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:var(--gold);
+    color:#111;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+.final{
+    background:
+    linear-gradient(
+    rgba(0,0,0,.95),
+    rgba(30,10,10,.95)
+    );
+}
+
+.final h1{
+    font-size:5rem;
+    color:var(--gold);
+    margin:20px 0;
+}
+
+/* ===========================
+   PARTICLES
+=========================== */
+
+#particles{
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    pointer-events:none;
+
+    z-index:9999;
+}
+
+.magic-particle{
+    position:absolute;
+
+    width:4px;
+    height:4px;
+
+    background:var(--gold);
+
+    border-radius:50%;
+
+    animation:floatUp linear forwards;
+}
+
+@keyframes floatUp{
+
+    from{
+        transform:translateY(0);
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(-100vh);
+        opacity:0;
+    }
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:768px){
+
+    .hero h1{
+        font-size:4rem;
+    }
+
+    .hero h2{
+        font-size:1.4rem;
+    }
+
+    .quote{
+        font-size:1.3rem;
+    }
+
+    .section h2{
+        font-size:1.8rem;
+    }
+
+    .section p{
+        font-size:1.2rem;
+    }
+
+    .box{
+        width:120px;
+        height:120px;
+    }
+
+    .box span{
+        font-size:2rem;
+    }
+
+    .final h1{
+        font-size:3.5rem;
+    }
+
+}

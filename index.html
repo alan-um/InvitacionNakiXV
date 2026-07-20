@@ -1,24 +1,37 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Naki | 15 Años</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <!-- Fuentes de Google: Se usan una tipografía mágica/antigua para títulos y una legible para texto -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;600;700&family=Great+Vibes&display=swap"
+    rel="stylesheet">
 
-  <link rel="stylesheet" href="css/style2.css">
+  <!-- Fuentes de Google: Se usan una tipografía mágica/antigua para títulos y una legible para texto -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Montserrat:wght@300;400;600&display=swap"
+    rel="stylesheet">
+
+  <!-- Iconos FontAwesome para los botones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
   <!-- PARTICULAS -->
   <canvas id="magicCanvas"></canvas>
 
   <!-- HERO -->
-  <header class="hero">
+  <header class="hero" id="hero">
 
     <div class="hero-overlay"></div>
 
@@ -35,24 +48,41 @@
       <h2>Naki</h2>
 
       <blockquote>
-        “Juro solemnemente que mis quince van a ser una fiesta.”
+        “Juro solemnemente que Mis XV van a ser una fiesta!”
       </blockquote>
 
-      <button id="openInvitation" class="gold-btn">
-        Abrir Invitación ⚡
+      <!-- <button id="openInvitation" class="gold-btn">
+        Abrir Invitación
+      </button> -->
+
+      <button id="openInvitation" class="btn">
+        <i class="fa-solid fa-wand-sparkles"></i> Abrir Invitación
       </button>
 
     </div>
 
   </header>
 
+  <audio id="magicMusic" loop>
+    <source src="assets/music.m4a" type="audio/mpeg">
+  </audio>
+
   <!-- CONTENIDO -->
 
   <main id="invitation">
 
+    <!-- VIDEO CARTA -->
+    <section class="papiro">
+
+      <video autoplay muted playsinline preload="auto" id="cartaVideo" class="video">
+        <source src="assets/Carta_Invitacion.mp4" type="video/mp4">
+      </video>
+
+    </section>
+
     <!-- CARTA -->
 
-    <section class="magic-card parchment">
+    <!-- <section class="magic-card parchment">
 
       <img src="assets/wax-seal.jpg" class="seal">
 
@@ -63,7 +93,8 @@
       </p>
 
       <p>
-        Has sido seleccionado para asistir a una celebración extraordinaria en el Colegio Hogwarts de Magia y Hechicería.
+        Has sido seleccionado para asistir a una celebración extraordinaria en el Colegio Hogwarts de Magia y
+        Hechicería.
       </p>
 
       <p>
@@ -74,36 +105,38 @@
         Naki
       </p>
 
-      <img src="assets/quill.jpg" class="quill">
-
-    </section>
+    </section> -->
 
     <!-- COUNTDOWN -->
 
-    <section class="magic-card">
+    <section class="magic-card count-card">
 
-      <h3>⚡ La magia comienza en ⚡</h3>
+      <img src="assets/giraTiempo.png" class="giraTiempo">
+
+      <h3>La magia comienza en</h3>
 
       <div class="countdown">
+        <div class="count-group">
+          <div class="count-box">
+            <span id="days">000</span>
+            <small>DÍAS</small>
+          </div>
 
-        <div class="count-box">
-          <span id="days">000</span>
-          <small>DÍAS</small>
+          <div class="count-box">
+            <span id="hours">00</span>
+            <small>HORAS</small>
+          </div>
         </div>
+        <div class="count-group">
+          <div class="count-box">
+            <span id="minutes">00</span>
+            <small>MINUTOS</small>
+          </div>
 
-        <div class="count-box">
-          <span id="hours">00</span>
-          <small>HORAS</small>
-        </div>
-
-        <div class="count-box">
-          <span id="minutes">00</span>
-          <small>MINUTOS</small>
-        </div>
-
-        <div class="count-box">
-          <span id="seconds">00</span>
-          <small>SEGUNDOS</small>
+          <div class="count-box">
+            <span id="seconds">00</span>
+            <small>SEGUNDOS</small>
+          </div>
         </div>
 
       </div>
@@ -114,11 +147,11 @@
 
     <section class="magic-card parchment">
 
-      <h3>📜 Fecha y Hora</h3>
+      <h3>Fecha y Hora</h3>
 
       <p class="big">05 Septiembre 2026</p>
 
-      <p class="big">21:00 hs</p>
+      <p class="big">- 21:00 hs -</p>
 
     </section>
 
@@ -126,61 +159,56 @@
 
     <section class="magic-card map-card">
 
-      <h3>🏰 Lugar</h3>
+      <h3>Lugar</h3>
 
       <p class="big">Guinez Eventos</p>
+      <p>Av. del Fundador 1100, San Luis</p>
 
-      <a
-        href="https://maps.app.goo.gl/25PhPpqrFunmXeN98"
-        target="_blank"
-        class="gold-btn">
-        Ver Ubicación
+      <a href="https://maps.app.goo.gl/25PhPpqrFunmXeN98" target="_blank" class="btn">
+        <i class="fa-solid fa-map-location-dot"></i> Cómo llegar
       </a>
 
     </section>
 
     <!-- CONFIRMACION -->
 
-    <section class="magic-card">
+    <section class="magic-card parchment">
 
-      <img src="assets/owl.webp" class="owl-small">
-
-      <h3>🦉 Confirmación</h3>
+      <h3>Confirmar asistencia</h3>
 
       <p>
         Confirma tu asistencia antes de que parta el Expreso de Hogwarts.
       </p>
+      <p>
+        Tenés tiempo hasta el 20 de agosto.
+      </p>
 
-      <a
-        href="https://wa.me/542664349020"
-        class="gold-btn"
-        target="_blank">
-        Confirmar Asistencia
+      <img src="assets/pluma.png" class="pluma">
+
+      <a href="https://wa.me/5492664349020?text=Hola!%20Quiero%20confirmar%20mi%20asistencia%20al%20cumple%20de%20Naki%F0%9F%A7%AA%E2%9C%A8"
+        target="_blank" class="btn" style="border-color: #25D366; color: #25D366;">
+        <i class="fa-brands fa-whatsapp"></i> Confirmar por WhatsApp
       </a>
 
     </section>
 
     <!-- REGALO -->
 
-    <section class="magic-card parchment">
+    <section class="magic-card cofre-card">
 
-      <h3>🏦 Gringotts</h3>
+      <h3>El mejor regalo es que vengas a compartir conmigo</h3>
 
-      <p>
-        Tu presencia es el mejor regalo.
-      </p>
+      <p>Si además querés acompañarme en mis próximos sueños,<br> en el salón habrá un cofre destinado a tal fin.</p>
 
-      <div class="alias-box">
+      <p>También podés realizar una transferencia al siguiente alias:</p>
 
-        <span id="alias">
+      <div class="alias-box" id="aliasTexto"><span id="alias">
           NakiMP
-        </span>
+        </span></div>
 
-        <button id="copyAlias">
-          Copiar Alias
-        </button>
-
-      </div>
+      <button id="copyAlias" class="btn">
+        <i class="fa-solid fa-copy"></i> Copiar Alias
+      </button>
 
     </section>
 
@@ -188,14 +216,19 @@
 
     <section class="magic-card">
 
-      <h3>🎵 Playlist Mágica</h3>
+      <h3>Playlist Mágica</h3>
 
       <p>
         La música está siendo preparada por los elfos domésticos.
       </p>
-
-      <a href="#" class="gold-btn">
+      <p>
+        ¡Ayudalos a armar la playlist de la fiesta agregando tus canciones favoritas!.
+      </p>
+      <!-- <a href="#" class="gold-btn">
         Escuchar Playlist
+      </a> -->
+      <a href="#" target="_blank" class="btn" style="border-color: #1DB954; color: #1DB954;">
+        <i class="fa-brands fa-spotify"></i> Sugerir Canción
       </a>
 
     </section>
@@ -204,7 +237,7 @@
 
     <footer class="magic-card parchment footer-card">
 
-      <img src="assets/quill.jpg" class="footer-quill">
+      <img src="assets/sello_Naki.png" class="sello">
 
       <p>
         Te espero para vivir juntos una noche mágica.
@@ -212,19 +245,18 @@
 
       <h2>Naki</h2>
 
-      <h4>⚡ 15 años ⚡</h4>
+      <h1>15 Años</h1>
 
       <p>
         05 • 09 • 2026
       </p>
 
-      <img src="assets/inkwell.jpg" class="inkwell">
-
     </footer>
 
   </main>
 
-  <script src="js/scritpt2.js"></script>
+  <script src="js/scritpt.js"></script>
 
 </body>
+
 </html>
