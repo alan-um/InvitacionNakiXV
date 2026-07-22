@@ -563,6 +563,22 @@ blockquote {
 }
 
 /* =========================
+   DRESS CODE
+========================= */
+
+.dress-card {
+
+    background:
+        linear-gradient(rgba(25, 62, 53, 0.85),
+            rgba(8, 29, 25, .85)),
+        url('../assets/dressCode.png');
+
+    background-size: cover;
+    background-position: center;
+
+}
+
+/* =========================
    COFRE
 ========================= */
 
